@@ -15,6 +15,7 @@
 		32EAFD6E1B77BC9600096813 /* Face.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32EAFD6C1B77BC9600096813 /* Face.cpp */; };
 		32EAFD711B77BE0100096813 /* HalfEdge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32EAFD6F1B77BE0100096813 /* HalfEdge.cpp */; };
 		32EAFD741B77C14E00096813 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32EAFD721B77C14E00096813 /* Mesh.cpp */; };
+		32EAFD771B77C67500096813 /* MeshIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32EAFD751B77C67500096813 /* MeshIO.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,8 @@
 		32EAFD701B77BE0100096813 /* HalfEdge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HalfEdge.h; sourceTree = "<group>"; };
 		32EAFD721B77C14E00096813 /* Mesh.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Mesh.cpp; sourceTree = "<group>"; };
 		32EAFD731B77C14E00096813 /* Mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mesh.h; sourceTree = "<group>"; };
+		32EAFD751B77C67500096813 /* MeshIO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MeshIO.cpp; sourceTree = "<group>"; };
+		32EAFD761B77C67500096813 /* MeshIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeshIO.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +96,8 @@
 				32EAFD701B77BE0100096813 /* HalfEdge.h */,
 				32EAFD721B77C14E00096813 /* Mesh.cpp */,
 				32EAFD731B77C14E00096813 /* Mesh.h */,
+				32EAFD751B77C67500096813 /* MeshIO.cpp */,
+				32EAFD761B77C67500096813 /* MeshIO.h */,
 			);
 			path = "halfedge-mesh";
 			sourceTree = "<group>";
@@ -153,6 +158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32EAFD771B77C67500096813 /* MeshIO.cpp in Sources */,
 				32EAFD741B77C14E00096813 /* Mesh.cpp in Sources */,
 				32EAFD6E1B77BC9600096813 /* Face.cpp in Sources */,
 				32EAFD711B77BE0100096813 /* HalfEdge.cpp in Sources */,

@@ -7,25 +7,29 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>AB9CDF40-6943-4C8A-97F1-D1F339AD0BB3</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>halfedge-mesh</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>83A530744734BAB23FDC381167231570FC2E14FC</key>
+		<string>https://github.com/rohan-sawhney/halfedge-mesh.git</string>
 		<key>93012211585513E702385219484BD8E8D4D7E84E</key>
 		<string>https://github.com/rohan-sawhney/medial-axis-transform-2d.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>halfedge-mesh/halfedge-mesh.xcodeproj/project.xcworkspace</string>
+	<string>halfedge-mesh.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>83A530744734BAB23FDC381167231570FC2E14FC</key>
+		<string>../..</string>
 		<key>93012211585513E702385219484BD8E8D4D7E84E</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/rohan-sawhney/medial-axis-transform-2d.git</string>
+	<string>https://github.com/rohan-sawhney/halfedge-mesh.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>93012211585513E702385219484BD8E8D4D7E84E</string>
+	<string>83A530744734BAB23FDC381167231570FC2E14FC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -34,7 +38,15 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>93012211585513E702385219484BD8E8D4D7E84E</string>
 			<key>IDESourceControlWCCName</key>
-			<string>C++</string>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>83A530744734BAB23FDC381167231570FC2E14FC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>halfedge-mesh</string>
 		</dict>
 	</array>
 </dict>

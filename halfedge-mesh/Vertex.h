@@ -11,9 +11,6 @@ public:
     // location in 3d
     Eigen::Vector3d position;
     
-    // uv 
-    Eigen::Vector2d texCoord;
-    
     // id between 0 and |V|-1
     int index;
     

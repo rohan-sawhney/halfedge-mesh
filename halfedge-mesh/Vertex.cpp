@@ -1,4 +1,5 @@
 #include "Vertex.h"
+#include "HalfEdge.h"
 
 std::vector<HalfEdge> isolated;
 

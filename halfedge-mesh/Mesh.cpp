@@ -1,34 +1,67 @@
 #include "Mesh.h"
+#include "MeshIO.h"
 
 Mesh::Mesh()
 {
-    // TODO
+    
 }
 
 Mesh::Mesh(const Mesh& mesh)
 {
-    // TODO
-}
-
-const Mesh& Mesh::operator=(const Mesh& mesh)
-{
-    // TODO
-    return *this;
+    *this = mesh;
 }
 
 bool Mesh::read(const std::string& fileName)
 {
-    // TODO
-    return false;
+    std::ifstream in(fileName.c_str());
+
+    if (!in.is_open()) {
+        std::cerr << "Error: Could not open file for reading" << std::endl;
+    }
+    
+    bool readSuccessful = false;
+    if ((readSuccessful = MeshIO::read(in, *this))) {
+        normalize();
+    }
+    
+    return readSuccessful;
 }
 
 bool Mesh::write(const std::string& fileName) const
 {
-    // TODO
+    std::ofstream out(fileName.c_str());
+    
+    if (!out.is_open()) {
+        std::cerr << "Error: Could not open file for writing" << std::endl;
+    }
+    
+    MeshIO::write(out, *this);
+    
     return false;
 }
 
 void Mesh::normalize()
 {
-    // TODO
+    // compute center of mass
+    Eigen::Vector3d cm = Eigen::Vector3d::Zero();
+    for (VertexCIter v = vertices.begin(); v != vertices.end(); v++) {
+        cm += v->position;
+    }
+    cm /= (double)vertices.size();
+    
+    // translate to origin
+    for (VertexIter v = vertices.begin(); v != vertices.end(); v++) {
+        v->position -= cm;
+    }
+    
+    // determine radius
+    double rMax = 0;
+    for (VertexCIter v = vertices.begin(); v != vertices.end(); v++) {
+        rMax = std::max(rMax, v->position.norm());
+    }
+    
+    // rescale to unit sphere
+    for (VertexIter v = vertices.begin(); v != vertices.end(); v++) {
+        v->position /= rMax;
+    }
 }
