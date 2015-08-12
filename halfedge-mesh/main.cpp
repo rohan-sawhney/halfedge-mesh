@@ -61,11 +61,11 @@ void drawEdges()
 
 void drawFaces()
 {
+    glColor4f(0.0, 0.0, 1.0, 0.6);
     for (FaceCIter f = mesh.faces.begin(); f != mesh.faces.end(); f++) {
         
         if (f->isBoundary()) continue;
         
-        glColor4f(0.0, 0.0, 1.0, 0.6);
         glBegin(GL_LINE_LOOP);
         HalfEdgeCIter he = f->he;
         do {
