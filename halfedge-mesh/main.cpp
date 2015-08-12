@@ -5,6 +5,7 @@
 #endif
 
 #include "Mesh.h"
+#include <stack>
 
 int gridX = 600;
 int gridY = 600;
@@ -14,20 +15,22 @@ const double fovy = 50.;
 const double clipNear = .01;
 const double clipFar = 1000.;
 double x = 0;
-double z = -2.5;
 double y = 0;
+double z = -2.5;
 
 bool showFaces = true;
 std::vector<std::string> paths = {"/Users/rohansawhney/Desktop/developer/C++/halfedge-mesh/bunny.obj",
                                   "/Users/rohansawhney/Desktop/developer/C++/halfedge-mesh/kitten.obj",
                                   "/Users/rohansawhney/Desktop/developer/C++/halfedge-mesh/torus.obj"};
 Mesh mesh;
+std::vector<Mesh> submeshes;
+bool success = true;
 
 void printInstructions()
 {
     std::cerr << "space: toggle between meshes\n"
               << "q: toggle between drawing polygons and edges\n"
-              << ": move in/out\n"
+              << "↑/↓: move in/out\n"
               << "w/s: move up/down\n"
               << "a/d: move left/right\n"
               << "escape: exit program\n"
@@ -48,7 +51,7 @@ void drawEdges()
     for (EdgeCIter e = mesh.edges.begin(); e != mesh.edges.end(); e ++) {
         Eigen::Vector3d a = e->he->vertex->position;
         Eigen::Vector3d b = e->he->flip->vertex->position;
-        
+            
         glVertex3d(a.x(), a.y(), a.z());
         glVertex3d(b.x(), b.y(), b.z());
     }
@@ -59,6 +62,9 @@ void drawEdges()
 void drawFaces()
 {
     for (FaceCIter f = mesh.faces.begin(); f != mesh.faces.end(); f++) {
+        
+        if (f->isBoundary()) continue;
+        
         glColor4f(0.0, 0.0, 1.0, 0.6);
         glBegin(GL_LINE_LOOP);
         HalfEdgeCIter he = f->he;
@@ -90,11 +96,13 @@ void display()
     
     gluLookAt(0, 0, z, x, y, 0, 0, 1, 0);
     
-    if (showFaces) {
-        drawFaces();
-        
-    } else {
-        drawEdges();
+    if (success) {
+        if (showFaces) {
+            drawFaces();
+            
+        } else {
+            drawEdges();
+        }
     }
 
     glutSwapBuffers();
@@ -127,7 +135,6 @@ void keyboard(unsigned char key, int x0, int y0)
             y -= 0.03;
             break;
         case GLUT_KEY_UP:
-            std::cout << "1" << std::endl;
             z += 0.03;
             break;
         case GLUT_KEY_DOWN:
@@ -154,7 +161,7 @@ void special(int i, int x0, int y0)
 
 int main(int argc, char** argv) {
     
-    mesh.read(paths[0]);
+    success = mesh.read(paths[0]);
     
     printInstructions();
     glutInitWindowSize(gridX, gridY);
