@@ -45,8 +45,10 @@ Index parseFaceIndex(const std::string& token)
     
     int i = 0;
     while(getline(in,indexString,'/')) {
-        std::stringstream ss(indexString);
-        ss >> indices[i++];
+        if (indexString != "\\") {
+            std::stringstream ss(indexString);
+            ss >> indices[i++];
+        }
     }
     
     // decrement since indices in OBJ files are 1-based
@@ -359,7 +361,14 @@ bool MeshIO::read(std::ifstream& in, Mesh& mesh)
             std::vector<Index> faceIndices;
             
             while (ss >> token) {
-                faceIndices.push_back(parseFaceIndex(token));
+                Index index = parseFaceIndex(token);
+                if (index.position < 0) {
+                    getline(in, line);
+                    size_t i = line.find_first_not_of("\t\n\v\f\r ");
+                    index = parseFaceIndex(line.substr(i));
+                }
+                
+                faceIndices.push_back(index);
             }
             
             data.indices.push_back(faceIndices);
