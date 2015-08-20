@@ -17,6 +17,7 @@ bool Mesh::read(const std::string& fileName)
 
     if (!in.is_open()) {
         std::cerr << "Error: Could not open file for reading" << std::endl;
+        return false;
     }
     
     bool readSuccessful = false;
@@ -33,6 +34,7 @@ bool Mesh::write(const std::string& fileName) const
     
     if (!out.is_open()) {
         std::cerr << "Error: Could not open file for writing" << std::endl;
+        return false;
     }
     
     MeshIO::write(out, *this);
