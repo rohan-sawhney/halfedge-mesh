@@ -5,7 +5,6 @@
 #endif
 
 #include "Mesh.h"
-#include <stack>
 
 int gridX = 600;
 int gridY = 600;
@@ -23,7 +22,6 @@ std::vector<std::string> paths = {"/Users/rohansawhney/Desktop/developer/C++/hal
                                   "/Users/rohansawhney/Desktop/developer/C++/halfedge-mesh/kitten.obj",
                                   "/Users/rohansawhney/Desktop/developer/C++/halfedge-mesh/torus.obj"};
 Mesh mesh;
-std::vector<Mesh> submeshes;
 bool success = true;
 
 void printInstructions()
