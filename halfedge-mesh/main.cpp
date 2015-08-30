@@ -132,12 +132,6 @@ void keyboard(unsigned char key, int x0, int y0)
         case 's':
             y -= 0.03;
             break;
-        case GLUT_KEY_UP:
-            z += 0.03;
-            break;
-        case GLUT_KEY_DOWN:
-            z -= 0.03;
-            break;
     }
     
     glutPostRedisplay();
