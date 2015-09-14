@@ -1,8 +1,4 @@
 #include "MeshIO.h"
-#include "Vertex.h"
-#include "Edge.h"
-#include "Face.h"
-#include "HalfEdge.h"
 #include "Mesh.h"
 #include <set>
 #include <map>
@@ -437,6 +433,7 @@ void MeshIO::write(std::ofstream& out, const Mesh& mesh)
             he = he->next;
         } while (he != mesh.faces[index].he);
         
+        std::cout << std::endl;
         index ++;
     }
 }
