@@ -33,6 +33,9 @@ public:
 private:
     // center mesh about origin and rescale to unit radius
     void normalize();
+    
+    // mark feature edges
+    void markFeatures(const double angle);
 };
 
 #endif

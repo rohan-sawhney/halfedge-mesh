@@ -8,14 +8,20 @@ public:
     // one of the halfedges associated with this face
     HalfEdgeIter he;
     
+    // returns normal to face
+    Eigen::Vector3d normal;
+    
+    // returns centroid
+    Eigen::Vector3d centroid;
+    
     // checks if this face lies on boundary
     bool isBoundary() const;
     
     // returns face area
     double area() const;
     
-    // returns normal to face
-    Eigen::Vector3d normal() const;
+    // compute normal and centroid
+    void computeFeatures();
 };
 
 #endif

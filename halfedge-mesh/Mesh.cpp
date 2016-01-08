@@ -23,6 +23,7 @@ bool Mesh::read(const std::string& fileName)
     bool readSuccessful = false;
     if ((readSuccessful = MeshIO::read(in, *this))) {
         normalize();
+        markFeatures(35 * M_PI / 180.0);
     }
     
     return readSuccessful;
@@ -65,5 +66,28 @@ void Mesh::normalize()
     // rescale to unit sphere
     for (VertexIter v = vertices.begin(); v != vertices.end(); v++) {
         v->position /= rMax;
+    }
+    
+    for (FaceIter f = faces.begin(); f != faces.end(); f++) {
+        f->computeFeatures();
+    }
+}
+
+void Mesh::markFeatures(const double angle)
+{
+    for (EdgeIter e = edges.begin(); e != edges.end(); e++) {
+        
+        if (!e->he->onBoundary && !e->he->flip->onBoundary) {
+            // compute dihedral angle
+            Eigen::Vector3d n1 = e->he->next->next->vertex->normal();
+            Eigen::Vector3d n2 = e->he->flip->next->next->vertex->normal();
+            double d = n1.dot(n2);
+            if (d < -1.0) d = -1.0;
+            else if (d >  1.0) d = 1.0;
+            
+            if (std::abs(acos(d)) > angle) {
+                e->feature = true;
+            }
+        }
     }
 }

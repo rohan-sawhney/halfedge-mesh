@@ -9,6 +9,12 @@ public:
     HalfEdgeIter he;
     
     double length() const;
+    
+    // checks if edge lies on boundary
+    bool isBoundary() const;
+    
+    // flag
+    bool feature;
 };
 
 #endif

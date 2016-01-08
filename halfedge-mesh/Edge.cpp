@@ -1,4 +1,5 @@
 #include "Edge.h"
+#include "Face.h"
 #include "HalfEdge.h"
 #include "Vertex.h"
 
@@ -8,4 +9,9 @@ double Edge::length() const
     Eigen::Vector3d b = he->flip->vertex->position;
     
     return (b-a).norm();
+}
+
+bool Edge::isBoundary() const
+{
+    return he->face->isBoundary() || he->flip->face->isBoundary();
 }
