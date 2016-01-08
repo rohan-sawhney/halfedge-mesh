@@ -20,7 +20,6 @@ Eigen::Vector3d Vertex::normal() const
     }
     
     double angle;
-    
     HalfEdgeCIter h = he;
     do {
         Eigen::Vector3d e1 = h->flip->vertex->position - position;
@@ -34,9 +33,6 @@ Eigen::Vector3d Vertex::normal() const
         n = h->face->normal;
         if (n.squaredNorm() == 0.0) {
             n.setZero();
-            
-        } else {
-            n.normalize();
         }
         
         normal += angle * n;

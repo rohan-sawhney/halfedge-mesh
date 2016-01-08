@@ -23,7 +23,7 @@ bool Mesh::read(const std::string& fileName)
     bool readSuccessful = false;
     if ((readSuccessful = MeshIO::read(in, *this))) {
         normalize();
-        markFeatures(35 * M_PI / 180.0);
+        markFeatures(45 * M_PI / 180.0);
     }
     
     return readSuccessful;

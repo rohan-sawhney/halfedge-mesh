@@ -44,9 +44,7 @@ void init()
 
 bool isFrontFacing(const Eigen::Vector3d& v1, const Eigen::Vector3d& v2)
 {
-    double a = v1.dot(v2) / sqrt(v1.dot(v1) * v2.dot(v2));
-    if (a < -1.0) a = -1.0;
-    else if (a >  1.0) a = 1.0;
+    double a = v1.dot(v2);
     return acos(a) > M_PI_2 ? true : false;
 }
 
@@ -59,8 +57,10 @@ void drawEdges()
         glColor4f(0.0, 0.0, 0.6, 0.5);
         
         if (renderNPR) {
-            bool f1 = isFrontFacing(e->he->face->normal, e->he->face->centroid - camera);
-            bool f2 = isFrontFacing(e->he->flip->face->normal, e->he->flip->face->centroid - camera);
+            bool f1 = isFrontFacing(e->he->face->normal,
+                                    (e->he->face->centroid - camera).normalized());
+            bool f2 = isFrontFacing(e->he->flip->face->normal,
+                                    (e->he->flip->face->centroid - camera).normalized());
             
             if (e->feature || e->isBoundary() || f1 != f2) {
                 glLineWidth(3.0);
