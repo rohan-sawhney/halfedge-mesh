@@ -28,5 +28,5 @@ void Face::computeFeatures()
     Eigen::Vector3d v1 = a - b;
     Eigen::Vector3d v2 = c - b;
     
-    normal = (v1.cross(v2)).normalized();
+    normal = v1.cross(v2);
 }
