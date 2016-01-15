@@ -44,8 +44,7 @@ void init()
 
 bool isFrontFacing(const Eigen::Vector3d& v1, const Eigen::Vector3d& v2)
 {
-    double a = v1.dot(v2) / sqrt(v1.dot(v1) * v2.dot(v2));
-    return acos(a) > M_PI_2 ? true : false;
+    return v1.dot(v2) > 0;
 }
 
 void drawEdges()
