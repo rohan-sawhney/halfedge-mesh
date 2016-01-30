@@ -66,8 +66,8 @@ void drawEdges()
         }
         
         glBegin(GL_LINES);
-        Eigen::Vector3d a = e->he->vertex->position;
-        Eigen::Vector3d b = e->he->flip->vertex->position;
+        const Eigen::Vector3d& a(e->he->vertex->position);
+        const Eigen::Vector3d& b(e->he->flip->vertex->position);
             
         glVertex3d(a.x(), a.y(), a.z());
         glVertex3d(b.x(), b.y(), b.z());
